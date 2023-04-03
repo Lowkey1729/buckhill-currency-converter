@@ -23,7 +23,9 @@
     "spatie/enum": "^3.13",
     "illuminate/http": "^10.5",
     "illuminate/contracts": "^10.5",
-    "illuminate/container": "^10.5"
+    "illuminate/container": "^10.5",
+    "illuminate/database": "^10.5",
+    "illuminate/console": "^10.5"
   },
   "require-dev": {
     "phpunit/phpunit": "^10.0",
