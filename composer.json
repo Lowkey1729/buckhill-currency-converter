@@ -1,0 +1,40 @@
+{
+  "name": "mojeed/buckhill-currency-converter",
+  "description": "This package allows an international user able to know the price of a particular product or the total cart amount in the currency of his preference",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Mojeed\\BuckhillCurrencyConverter\\": "src/"
+    },
+    "files": [
+      "Mojeed/BuckhillCurrencyConverter/Helpers/common.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "Olarewaju Mojeed",
+      "email": "olarewajumojeed9@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "illuminate/support": "^10.5",
+    "guzzlehttp/guzzle": "^7.5",
+    "spatie/enum": "^3.13",
+    "illuminate/http": "^10.5",
+    "illuminate/contracts": "^10.5",
+    "illuminate/container": "^10.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.0",
+    "phpstan/phpstan": "^1.10",
+    "laravel/pint": "^1.7"
+  },
+  "minimum-stability": "stable",
+  "scripts": {
+    "test": "@php ./vendor/bin/phpunit",
+    "analyse": "@php ./vendor/bin/phpstan analyse --memory-limit 1G --configuration phpstan.neon.dist --ansi",
+    "pint": "@php ./vendor/bin/pint",
+    "swagger": "@php artisan l5-swagger:generate --ansi"
+  }
+}
