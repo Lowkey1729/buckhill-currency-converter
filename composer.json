@@ -47,9 +47,9 @@
   },
   "scripts": {
     "test": "@php ./vendor/bin/phpunit",
-    "analyse": "@php ./vendor/bin/phpstan analyse --memory-limit 1G --configuration phpstan.neon.dist --ansi",
+    "analyse": "@php ./vendor/bin/phpstan analyse --memory-limit 1G --configuration phpstan.neon --ansi",
     "pint": "@php ./vendor/bin/pint",
-    "swagger": "@php artisan l5-swagger:generate --ansi"
+    "phpinsights": "@php ./vendor/bin/phpinsights"
   },
   "config": {
     "allow-plugins": {
