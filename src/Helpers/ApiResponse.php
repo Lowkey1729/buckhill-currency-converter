@@ -2,23 +2,22 @@
 
 namespace Mojeed\BuckhillCurrencyConverter\Helpers;
 
-use Illuminate\Contracts\Container\BindingResolutionException;
-use Illuminate\Support\Facades\Response;
 use Mojeed\BuckhillCurrencyConverter\Enums\ApiResponse as ApiResponseEnum;
 use Illuminate\Http\JsonResponse;
 
 final class ApiResponse
 {
-
     /**
-     * @throws BindingResolutionException
+     * @param array|object $data
+     * @param array $extraData
+     * @param int $httpStatusCode
+     * @return JsonResponse
      */
     public static function success(
         array|object $data = [],
         array        $extraData = [],
         int          $httpStatusCode = 200
-    ): JsonResponse
-    {
+    ): JsonResponse {
         return \response()->json([
             'success' => ApiResponseEnum::success()->value,
             'data' => $data,
@@ -29,8 +28,14 @@ final class ApiResponse
         ], $httpStatusCode);
     }
 
+
     /**
-     * @throws BindingResolutionException
+     * @param string $errorMessage
+     * @param array $data
+     * @param array $errors
+     * @param array $errorTrace
+     * @param int $httpStatusCode
+     * @return JsonResponse
      */
     public static function failed(
         string $errorMessage,
@@ -38,8 +43,7 @@ final class ApiResponse
         array  $errors = [],
         array  $errorTrace = [],
         int    $httpStatusCode = 200
-    ): JsonResponse
-    {
+    ): JsonResponse {
         return \response()->json([
             'success' => ApiResponseEnum::failed()->value,
             'data' => $data,
