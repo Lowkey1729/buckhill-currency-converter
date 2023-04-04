@@ -1,6 +1,6 @@
 <?php
 
-namespace Mojeed\BuckhillCurrencyConverter\Concerns;
+namespace Mojeed\BuckhillCurrencyConverter\Services\Concerns;
 
 use GuzzleHttp\Client;
 

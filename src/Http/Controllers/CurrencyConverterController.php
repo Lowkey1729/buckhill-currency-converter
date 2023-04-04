@@ -3,35 +3,25 @@
 namespace Mojeed\BuckhillCurrencyConverter\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Mojeed\BuckhillCurrencyConverter\Exceptions\ConverterError;
-use Mojeed\BuckhillCurrencyConverter\Concerns\ConvertCurrencyRules;
-use Mojeed\BuckhillCurrencyConverter\Helpers\ApiResponse;
+use Mojeed\BuckhillCurrencyConverter\Services\Helpers\ApiResponse;
+use Mojeed\BuckhillCurrencyConverter\Http\Requests\CurrencyConverterRequest;
 use Mojeed\BuckhillCurrencyConverter\Services\Actions\CurrencyConverter;
 
 class CurrencyConverterController
 {
-    use ConvertCurrencyRules;
-
-
-    /**
-     * @param Request $request
-     * @param CurrencyConverter $currencyConverter
-     * @return JsonResponse
-     */
-    public function __invoke(Request $request, CurrencyConverter $currencyConverter): JsonResponse
+    public function __invoke(CurrencyConverterRequest $request, CurrencyConverter $currencyConverter): JsonResponse
     {
-        $validated = $request->validate($this->rules());
         try {
             $result = $currencyConverter->convertCurrency(
-                $validated['amount'],
-                $validated['currency'],
+                $request->amount,
+                $request->currency,
             );
             return ApiResponse::success(
                 [
-                    'currency' => $validated['currency'],
-                    'primary_currency' => $validated['primary_currency'] ?? 'EUR',
-                    'amount' => $validated['amount'],
+                    'currency' => $request->currency,
+                    'primary_currency' => $request->primary_currency ?? 'EUR',
+                    'amount' =>  $request->amount,
                     'converted_amount' => $result['converted_amount'],
                     'rate' => $result['rate']
                 ]

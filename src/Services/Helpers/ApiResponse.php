@@ -1,8 +1,8 @@
 <?php
 
-namespace Mojeed\BuckhillCurrencyConverter\Helpers;
+namespace Mojeed\BuckhillCurrencyConverter\Services\Helpers;
 
-use Mojeed\BuckhillCurrencyConverter\Enums\ApiResponse as ApiResponseEnum;
+use Mojeed\BuckhillCurrencyConverter\Services\Enums\ApiResponse as ApiResponseEnum;
 use Illuminate\Http\JsonResponse;
 
 final class ApiResponse

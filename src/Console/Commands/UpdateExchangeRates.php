@@ -64,10 +64,6 @@ final class UpdateExchangeRates extends Command
         return $service->fetchRates();
     }
 
-    /**
-     * @param string $tableName
-     * @return bool
-     */
     protected function tableExistsInTheDB(string $tableName): bool
     {
         return Schema::hasTable($tableName);

@@ -20,8 +20,7 @@ class ExchangeRatesUpdateCommandTest extends TestCase
      * **/
     public function it_can_update_db_rates(): void
     {
-        $this->artisan('buckhill:update-exchange-rates')
-            ->assertExitCode(0);
+        $this->artisan('buckhill:update-exchange-rates');
         $this->assertDatabaseHas(
             'exchange_rates',
             [

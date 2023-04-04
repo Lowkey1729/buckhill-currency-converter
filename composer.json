@@ -34,7 +34,8 @@
     "phpstan/phpstan": "^1.10",
     "laravel/pint": "^1.7",
     "orchestra/testbench": "*",
-    "nunomaduro/larastan": "^2.0"
+    "nunomaduro/larastan": "^2.0",
+    "nunomaduro/phpinsights": "^2.8"
   },
   "minimum-stability": "stable",
   "extra": {
@@ -49,5 +50,10 @@
     "analyse": "@php ./vendor/bin/phpstan analyse --memory-limit 1G --configuration phpstan.neon.dist --ansi",
     "pint": "@php ./vendor/bin/pint",
     "swagger": "@php artisan l5-swagger:generate --ansi"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
   }
 }

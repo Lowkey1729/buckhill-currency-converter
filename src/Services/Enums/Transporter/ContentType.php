@@ -1,6 +1,6 @@
 <?php
 
-namespace Mojeed\BuckhillCurrencyConverter\Enums\Transporter;
+namespace Mojeed\BuckhillCurrencyConverter\Services\Enums\Transporter;
 
 use Spatie\Enum\Enum;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Mojeed\BuckhillCurrencyConverter\Enums;
+namespace Mojeed\BuckhillCurrencyConverter\Services\Enums;
 
 use Spatie\Enum\Enum;
 

@@ -4,9 +4,9 @@ namespace Mojeed\BuckhillCurrencyConverter\Transporters;
 
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
-use Mojeed\BuckhillCurrencyConverter\Concerns\Transportable;
+use Mojeed\BuckhillCurrencyConverter\Services\Concerns\Transportable;
 use Mojeed\BuckhillCurrencyConverter\Contracts\Transporters\TransporterContract;
-use Mojeed\BuckhillCurrencyConverter\Enums\Transporter\Method;
+use Mojeed\BuckhillCurrencyConverter\Services\Enums\Transporter\Method;
 use Mojeed\BuckhillCurrencyConverter\Services\XMLToArray;
 use Psr\Http\Message\ResponseInterface;
 
@@ -51,10 +51,6 @@ class HttpTransporter implements TransporterContract
         };
     }
 
-    /**
-     * @param ResponseInterface $response
-     * @return bool
-     */
     protected function responseIsSuccessful(ResponseInterface $response): bool
     {
         return in_array($response->getStatusCode(), [200, 201]);

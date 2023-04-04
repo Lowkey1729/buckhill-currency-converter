@@ -5,8 +5,8 @@ namespace Mojeed\BuckhillCurrencyConverter\Services\APIs;
 use Exception;
 use Mojeed\BuckhillCurrencyConverter\Contracts\Transporters\TransporterContract;
 use Mojeed\BuckhillCurrencyConverter\Contracts\CurrencyConverterContract;
-use Mojeed\BuckhillCurrencyConverter\Enums\Transporter\ContentType;
-use Mojeed\BuckhillCurrencyConverter\Enums\Transporter\Method;
+use Mojeed\BuckhillCurrencyConverter\Services\Enums\Transporter\ContentType;
+use Mojeed\BuckhillCurrencyConverter\Services\Enums\Transporter\Method;
 use Mojeed\BuckhillCurrencyConverter\Transporters\HttpTransporter;
 
 class EuropeanCentralBankRates implements CurrencyConverterContract
