@@ -5,10 +5,12 @@
   "autoload": {
     "psr-4": {
       "Mojeed\\BuckhillCurrencyConverter\\": "src/"
-    },
-    "files": [
-      "Mojeed/BuckhillCurrencyConverter/Helpers/common.php"
-    ]
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Mojeed\\BuckhillCurrencyConverter\\Tests\\": "tests/"
+    }
   },
   "authors": [
     {
@@ -30,9 +32,17 @@
   "require-dev": {
     "phpunit/phpunit": "^10.0",
     "phpstan/phpstan": "^1.10",
-    "laravel/pint": "^1.7"
+    "laravel/pint": "^1.7",
+    "orchestra/testbench": "*"
   },
   "minimum-stability": "stable",
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Mojeed\\BuckhillCurrencyConverter\\Providers\\BuckhillCurrencyConverterServiceProvider"
+      ]
+    }
+  },
   "scripts": {
     "test": "@php ./vendor/bin/phpunit",
     "analyse": "@php ./vendor/bin/phpstan analyse --memory-limit 1G --configuration phpstan.neon.dist --ansi",
