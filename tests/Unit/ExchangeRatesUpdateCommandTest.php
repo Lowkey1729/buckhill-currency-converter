@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mojeed\BuckhillCurrencyConverter\Tests\Unit;
 
 use Mojeed\BuckhillCurrencyConverter\Tests\TestCase;

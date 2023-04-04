@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mojeed\BuckhillCurrencyConverter\Providers;
 
 use Illuminate\Console\Scheduling\Schedule;
@@ -7,7 +9,7 @@ use Illuminate\Support\ServiceProvider;
 use Mojeed\BuckhillCurrencyConverter\Console\Commands\UpdateExchangeRates;
 use Mojeed\BuckhillCurrencyConverter\Services\APIs\EuropeanCentralBankRates;
 
-class BuckhillCurrencyConverterServiceProvider extends ServiceProvider
+final class BuckhillCurrencyConverterServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.

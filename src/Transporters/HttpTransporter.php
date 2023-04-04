@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mojeed\BuckhillCurrencyConverter\Transporters;
 
 use Exception;
@@ -7,13 +9,12 @@ use GuzzleHttp\Exception\GuzzleException;
 use Mojeed\BuckhillCurrencyConverter\Services\Concerns\Transportable;
 use Mojeed\BuckhillCurrencyConverter\Contracts\Transporters\TransporterContract;
 use Mojeed\BuckhillCurrencyConverter\Services\Enums\Transporter\Method;
-use Mojeed\BuckhillCurrencyConverter\Services\XMLToArray;
+use Mojeed\BuckhillCurrencyConverter\Services\Helpers\XMLToArray;
 use Psr\Http\Message\ResponseInterface;
 
-class HttpTransporter implements TransporterContract
+final class HttpTransporter implements TransporterContract
 {
     use Transportable;
-
 
     /**
      * @param string $method
@@ -63,7 +64,7 @@ class HttpTransporter implements TransporterContract
     protected function handledResponse(ResponseInterface $response): array
     {
         if ($this->responseIsSuccessful($response)) {
-            $result = XMLToArray::make($response->getBody());
+            $result = XMLToArray::make((string) $response->getBody());
             $data = $result['Cube']['Cube']['Cube'];
             return $this->responseFormat(true, $data);
         }

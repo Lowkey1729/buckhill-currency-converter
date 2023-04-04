@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mojeed\BuckhillCurrencyConverter\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
@@ -21,7 +23,7 @@ class CurrencyConverterController
                 [
                     'currency' => $request->currency,
                     'primary_currency' => $request->primary_currency ?? 'EUR',
-                    'amount' =>  $request->amount,
+                    'amount' => $request->amount,
                     'converted_amount' => $result['converted_amount'],
                     'rate' => $result['rate']
                 ]

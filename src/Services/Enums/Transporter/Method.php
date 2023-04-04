@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mojeed\BuckhillCurrencyConverter\Services\Enums\Transporter;
 
 use Spatie\Enum\Enum;
@@ -10,7 +12,7 @@ use Spatie\Enum\Enum;
  * @method static self GET()
  * @method static self DELETE()
  * */
-class Method extends Enum
+final class Method extends Enum
 {
     /**
      * @return array<string, string>

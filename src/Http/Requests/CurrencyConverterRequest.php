@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mojeed\BuckhillCurrencyConverter\Http\Requests;
 
 use Mojeed\BuckhillCurrencyConverter\Services\Helpers\ApiResponse;
@@ -12,7 +14,7 @@ use Illuminate\Validation\Rule;
  * @property mixed $amount
  * @property mixed $currency
  */
-class CurrencyConverterRequest extends FormRequest
+final class CurrencyConverterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

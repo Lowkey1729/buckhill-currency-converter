@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mojeed\BuckhillCurrencyConverter\Services\Actions;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Mojeed\BuckhillCurrencyConverter\Exceptions\ConverterError;
 
-class CurrencyConverter
+final class CurrencyConverter
 {
     /**
      * @param float $amount
@@ -16,7 +18,7 @@ class CurrencyConverter
      * @throws ConverterError
      */
     public function convertCurrency(
-        float  $amount,
+        float $amount,
         string $currency = 'EUR',
         string $primaryCurrency = 'EUR'
     ): array {

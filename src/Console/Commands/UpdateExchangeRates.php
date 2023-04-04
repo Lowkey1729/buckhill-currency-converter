@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mojeed\BuckhillCurrencyConverter\Console\Commands;
 
 use Exception;
@@ -30,7 +32,6 @@ final class UpdateExchangeRates extends Command
             $this->info('Exchange rates updated successfully!');
         }
 
-
         return 0;
     }
 
@@ -43,7 +44,7 @@ final class UpdateExchangeRates extends Command
         array $exchangeRates,
         array &$currencyRate
     ): void {
-        foreach ($exchangeRates as $key => $exchangeRate) {
+        foreach ($exchangeRates as $exchangeRate) {
             $currencyRate[] = [
                 'currency_to_exchange' => $exchangeRate['@attributes']['currency'],
                 'rate' => $exchangeRate['@attributes']['rate'],

@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mojeed\BuckhillCurrencyConverter\Services\Helpers;
 
-use Mojeed\BuckhillCurrencyConverter\Services\Enums\ApiResponse as ApiResponseEnum;
 use Illuminate\Http\JsonResponse;
+use Mojeed\BuckhillCurrencyConverter\Services\Enums\ApiResponse as ApiResponseEnum;
 
 final class ApiResponse
 {
@@ -15,8 +17,8 @@ final class ApiResponse
      */
     public static function success(
         array|object $data = [],
-        array        $extraData = [],
-        int          $httpStatusCode = 200
+        array $extraData = [],
+        int $httpStatusCode = 200
     ): JsonResponse {
         return \response()->json([
             'success' => ApiResponseEnum::success()->value,
@@ -39,10 +41,10 @@ final class ApiResponse
      */
     public static function failed(
         string $errorMessage,
-        array  $data = [],
-        array  $errors = [],
-        array  $errorTrace = [],
-        int    $httpStatusCode = 200
+        array $data = [],
+        array $errors = [],
+        array $errorTrace = [],
+        int $httpStatusCode = 200
     ): JsonResponse {
         return \response()->json([
             'success' => ApiResponseEnum::failed()->value,

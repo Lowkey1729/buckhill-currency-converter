@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mojeed\BuckhillCurrencyConverter\Services\Enums\Transporter;
 
 use Spatie\Enum\Enum;
@@ -9,7 +11,7 @@ use Spatie\Enum\Enum;
  * @method static self MULTIPART()
  * @method static self XML()
  * */
-class ContentType extends Enum
+final class ContentType extends Enum
 {
     /**
      * @return array<string, string>
