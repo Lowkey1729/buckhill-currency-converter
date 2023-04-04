@@ -13,7 +13,7 @@ use Spatie\Enum\Enum;
 class Method extends Enum
 {
     /**
-     * @return int[]
+     * @return array<string, string>
      */
     public static function values(): array
     {

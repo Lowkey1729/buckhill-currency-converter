@@ -6,7 +6,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Mojeed\BuckhillCurrencyConverter\Exceptions\ConverterError;
 use Mojeed\BuckhillCurrencyConverter\Services\Actions\CurrencyConverter;
 use Mojeed\BuckhillCurrencyConverter\Tests\TestCase;
-use Mockery;
 
 class CurrencyConverterTest extends TestCase
 {
@@ -29,9 +28,6 @@ class CurrencyConverterTest extends TestCase
      */
     public function it_can_convert_currency(): void
     {
-        Mockery::mock(CurrencyConverter::class)
-            ->shouldReceive('convertCurrency')
-            ->andReturn(129.3);
         $converter = resolve(CurrencyConverter::class);
         $result = $converter->convertCurrency(100, 'USD');
         $this->assertNotEmpty($result);

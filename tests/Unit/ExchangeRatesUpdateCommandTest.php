@@ -12,7 +12,7 @@ class ExchangeRatesUpdateCommandTest extends TestCase
         $this->artisan(
             'migrate',
             ['--database' => 'exchange_rates']
-        )->run();
+        );
     }
 
     /**
@@ -21,6 +21,13 @@ class ExchangeRatesUpdateCommandTest extends TestCase
     public function it_can_update_db_rates(): void
     {
         $this->artisan('buckhill:update-exchange-rates')
-            ->assertOk();
+            ->assertExitCode(0);
+        $this->assertDatabaseHas(
+            'exchange_rates',
+            [
+                'currency_to_exchange' => 'USD',
+                'primary_currency' => 'EUR'
+            ]
+        );
     }
 }

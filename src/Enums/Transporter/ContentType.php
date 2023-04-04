@@ -12,7 +12,7 @@ use Spatie\Enum\Enum;
 class ContentType extends Enum
 {
     /**
-     * @return int[]
+     * @return array<string, string>
      */
     public static function values(): array
     {
