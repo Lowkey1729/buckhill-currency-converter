@@ -14,7 +14,6 @@ class BuckhillCurrencyConverterServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-
         $this->app->singleton(EuropeanCentralBankRates::class, function () {
             return new EuropeanCentralBankRates();
         });

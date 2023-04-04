@@ -1,66 +1,78 @@
 <?php
 
-use Illuminate\Foundation\Application;
-use Mojeed\BuckhillCurrencyConverter\Providers\BuckhillCurrencyConverterServiceProvider;
-use Mojeed\BuckhillCurrencyConverter\Services\APIs\EuropeanCentralBankRates;
-use Mojeed\BuckhillCurrencyConverter\Services\CurrencyConverter;
+namespace Mojeed\BuckhillCurrencyConverter\Tests\Unit;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Mojeed\BuckhillCurrencyConverter\Exceptions\ConverterError;
+use Mojeed\BuckhillCurrencyConverter\Services\Actions\CurrencyConverter;
 use Mojeed\BuckhillCurrencyConverter\Tests\TestCase;
+use Mockery;
 
 class CurrencyConverterTest extends TestCase
 {
+    use RefreshDatabase;
+
     protected function setUp(): void
     {
         parent::setUp();
-        $this->artisan('migrate',
-            ['--database' => 'exchange_rates'])->run();
-        $this->artisan('buckhill:update-exchange-rates')
-            ->assertOk();
-
+        $this->artisan(
+            'migrate',
+            ['--database' => 'exchange_rates']
+        );
+        $this->artisan('buckhill:update-exchange-rates');
     }
 
     /**
      * @test
-     * **/
+     *
+     * @throws ConverterError
+     */
     public function it_can_convert_currency(): void
     {
         Mockery::mock(CurrencyConverter::class)
             ->shouldReceive('convertCurrency')
-            ->andReturn([
-                'USD' => 1.0875
-            ]);
+            ->andReturn(129.3);
         $converter = resolve(CurrencyConverter::class);
-        $result = $converter->convertCurrency(100);
-        self::assertNotEmpty($result);
-        self::assertIsArray($result['data']);
-
+        $result = $converter->convertCurrency(100, 'USD');
+        $this->assertNotEmpty($result);
+        $this->assertTrue(is_array($result));
+        $this->assertArrayHasKey('converted_amount', $result);
     }
 
     /**
-     * Define environment setup.
+     * @test
      *
-     * @param Application $app
-     * @return void
+     * @throws ConverterError
      */
-    protected function getEnvironmentSetUp($app): void
+    public function it_throws_converter_error(): void
     {
-        // Setup default database to use sqlite :memory:
-        $app['config']->set('database.default', 'exchange_rates');
-        $app['config']->set('database.connections.exchange_rates', [
-            'driver' => 'sqlite',
-            'database' => ':memory:',
-            'prefix' => '',
-        ]);
+        $this->expectException(ConverterError::class);
+        $converter = resolve(CurrencyConverter::class);
+        $converter->convertCurrency(100, 'INR09');
     }
 
     /**
-     * add the package provider
+     * @test
      *
-     * @param $app
-     * @return array
+     * @throws ConverterError
      */
-    protected function getPackageProviders($app): array
+    public function it_throws_converter_error_message_when_table_is_not_found(): void
     {
-        return [BuckhillCurrencyConverterServiceProvider::class];
+        $this->artisan('migrate:reset');
+        $this->expectExceptionMessage('You have not published or ran the required migration');
+        $converter = resolve(CurrencyConverter::class);
+        $converter->convertCurrency(100, 'INR');
     }
 
+    /**
+     * @test
+     *
+     * @throws ConverterError
+     */
+    public function it_throws_converter_error_message_when_currency_is_not_found(): void
+    {
+        $this->expectExceptionMessage('Invalid currency selected');
+        $converter = resolve(CurrencyConverter::class);
+        $converter->convertCurrency(100, 'JJHOPP');
+    }
 }
