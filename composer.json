@@ -20,14 +20,14 @@
   ],
   "require": {
     "php": "^8.2",
-    "illuminate/support": "^10.5",
+    "illuminate/support": "^10.5.0",
     "guzzlehttp/guzzle": "^7.5",
     "spatie/enum": "^3.13",
     "illuminate/http": "^10.5",
-    "illuminate/contracts": "^10.5",
-    "illuminate/container": "^10.5",
-    "illuminate/database": "^10.5",
-    "illuminate/console": "^10.5"
+    "illuminate/contracts": "^10.5.0",
+    "illuminate/container": "^10.5.0",
+    "illuminate/database": "^10.5.0",
+    "illuminate/console": "^10.5.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^10.0",
