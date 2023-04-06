@@ -21,9 +21,9 @@
   "require": {
     "php": "^8.2",
     "illuminate/support": "^10.5.0",
-    "guzzlehttp/guzzle": "^7.5",
+    "guzzlehttp/guzzle": "^7.5.0",
     "spatie/enum": "^3.13",
-    "illuminate/http": "^10.5",
+    "illuminate/http": "^10.5.0",
     "illuminate/contracts": "^10.5.0",
     "illuminate/container": "^10.5.0",
     "illuminate/database": "^10.5.0",
