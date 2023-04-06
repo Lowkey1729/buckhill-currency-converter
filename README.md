@@ -1,5 +1,5 @@
 ------
-**Buckhill-Currency converter** is a tool to help convert amounts in available currencies into Euros.
+**Buckhill-Currency converter** is a tool to help convert amounts in Euros  into available currencies.
 
 - Olarewaju Mojeed: **[github.com/Lowkey1729](https://github.com/Lowkey1729)**
 
