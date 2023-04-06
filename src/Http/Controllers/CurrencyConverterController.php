@@ -16,7 +16,7 @@ class CurrencyConverterController
     {
         try {
             $result = $currencyConverter->convertCurrency(
-                $request->amount,
+                (float) $request->amount,
                 $request->currency,
             );
             return ApiResponse::success(
