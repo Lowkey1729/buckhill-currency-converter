@@ -7,6 +7,7 @@
 - [Get Started](#get-started)
 - [Publish Assets](#publish-assets)
 - [Run Migration](#run-migration)
+- [Usage](#usage)
 - [Formatting](#formatting)
 - [Testing](#testing)
 - [PHPStan](#phpstan)
@@ -38,6 +39,10 @@ This is to create the "exchange_rates" table
 ```php
 php artisan migrate
 ```
+
+## Usage
+View the swagger documentation (**currency-converted**) section for more info
+
 ## Formatting
 To run the PSR12 format test, run
 ```bash

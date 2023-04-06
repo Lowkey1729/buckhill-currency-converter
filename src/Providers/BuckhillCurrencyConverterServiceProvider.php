@@ -26,14 +26,14 @@ final class BuckhillCurrencyConverterServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if ($this->app->runningInConsole()) {
+        if (app()->runningInConsole()) {
             $this->registerMigrations()
                 ->registerCommands()
                 ->registerRoutes();
         }
 
-        $this->app->booted(function () {
-            $schedule = $this->app->make(Schedule::class);
+        app()->booted(function () {
+            $schedule = app()->make(Schedule::class);
             $schedule->command('buckhill:update-exchange-rates')->daily();
         });
     }
