@@ -49,11 +49,7 @@
     "test": "@php ./vendor/bin/phpunit",
     "analyse": "@php ./vendor/bin/phpstan analyse --memory-limit 1G --configuration phpstan.neon --ansi",
     "pint": "@php ./vendor/bin/pint",
-    "phpinsights": "@php ./vendor/bin/phpinsights",
-    "post-autoload-dump": [
-      "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-      "@php artisan package:discover"
-    ]
+    "phpinsights": "@php ./vendor/bin/phpinsights"
   },
   "config": {
     "allow-plugins": {
