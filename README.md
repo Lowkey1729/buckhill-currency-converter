@@ -21,7 +21,7 @@
 First, install Buckhill-Currency Converter via the [Composer](https://getcomposer.org/) package manager:
 
 ```bash
-composer require mojeed/buckhill-currency-converter --ignore-platform-reqs
+composer require mojeed/buckhill-currency-converter:dev-main
 ```
 
 Ensure that the `php-http/discovery` composer plugin is allowed to run or install a client manually if your project does
