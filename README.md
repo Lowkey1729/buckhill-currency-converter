@@ -9,6 +9,7 @@
 - [Publish Assets](#publish-assets)
 - [Run Migration](#run-migration)
 - [Run Command](#run-command)
+- [Clear Route](#clear-route)
 - [Usage](#usage)
 - [Formatting](#formatting)
 - [Testing](#testing)
@@ -52,6 +53,15 @@ run the command below to populate the exchange_rates table
 
 ```php
 php artisan buckhill:update-exchange-rates
+```
+
+## Clear Route
+
+run the command below to refresh the routes list and make the
+convert currency routes available
+
+```php
+php artisan route:clear && php artisan route:cache
 ```
 
 ## Usage
